@@ -1,0 +1,38 @@
+﻿@model EHI.WebApp.Models.PatientContact
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Are you sure you want to delete @Model.FirstName @Model.LastName contact detail?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)
+
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+        <dd>
+            @if (!Model.Status) {
+                @Html.DisplayName("Active")
+            } else {
+                @Html.DisplayName("Inactive")
+            }
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" />
+            @Html.ActionLink("Cancel", "Index", "", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

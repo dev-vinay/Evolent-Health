@@ -1,0 +1,118 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/modernizr-2.8.3.js"></script>
+    <script src="../Scripts/application/patient.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/site.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getPatientDetails();
+
+            $("#postform").submit(function (e) {
+                e.preventDefault();
+                addFilm();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Evolent Health</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <p class="btn">
+            <button type="button" name="Add" id="btnAddPatient" class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="showPage()">New Patient</button>
+        </p>
+        <div class="container">
+            <table class="table" id="tblPatient">
+                <thead>
+                    <tr>
+                        <th>
+                            Patient Name
+                        </th>
+                        <th>
+                            Phone Number
+                        </th>
+                        <th>
+                            Email Address
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div id="divPatientDetails" class="modal-body">
+
+        </div>
+        <div id="divAddPatient" class="modal-body">
+            <div class="container">
+                <form name="postform" id="postform" method="post" class="form-horizontal">
+
+                    <div class="form-group">
+                        <input type="hidden" id="PatientID" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-info">First Name</label>
+                        <input type="text" id="FirstName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info">Last Name</label>
+                        <input type="text" id="LastName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info">Phone Number</label>
+                        <input type="text" id="PhoneNumber" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="text-info">Email Address</label>
+                        <input type="email" id="EmailAddress" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default btn-primary" onclick="addPatient();">Save</button>
+                <button type="button" id="btnCancel" class="btn btn-default" data-dismiss="modal" onclick="cancel();">Cancel</button> <!--data-dismiss="modal"-->
+            </div>
+        </div>      
+        <hr />
+        <footer>
+            <p>&copy; 2020 - Evolent Health</p>
+        </footer>
+    </div>
+</body>
+</html>
